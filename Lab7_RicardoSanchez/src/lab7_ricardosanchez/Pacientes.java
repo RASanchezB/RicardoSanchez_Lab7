@@ -10,7 +10,7 @@ public class Pacientes extends Personas{
     private String Tipo_Sangre;
     private String Causa_Vistita;
     private ArrayList <String> Alergias = new ArrayList();
-    private ArrayList <String> Organos_Evaluar = new ArrayList();
+    private ArrayList <Organos> Organos_Evaluar = new ArrayList();
 
     public Pacientes() {
     super();
@@ -72,11 +72,11 @@ public class Pacientes extends Personas{
         this.Alergias = Alergias;
     }
 
-    public ArrayList<String> getOrganos_Evaluar() {
+    public ArrayList<Organos> getOrganos_Evaluar() {
         return Organos_Evaluar;
     }
 
-    public void setOrganos_Evaluar(ArrayList<String> Organos_Evaluar) {
+    public void setOrganos_Evaluar(ArrayList<Organos> Organos_Evaluar) {
         this.Organos_Evaluar = Organos_Evaluar;
     }
 
