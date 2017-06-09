@@ -2,6 +2,7 @@ package lab7_ricardosanchez;
 
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -15,6 +16,8 @@ public class Principal extends javax.swing.JFrame {
 
         jd_Doctor = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         jd_Paciente = new javax.swing.JDialog();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -70,6 +73,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         tf_Sexo1 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        cb_PacientesElim = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -77,20 +84,48 @@ public class Principal extends javax.swing.JFrame {
 
         jd_Doctor.setTitle("Menu Doctor");
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 651, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 422, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Crear Doctor", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 651, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 422, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Modificar Doctor", jPanel7);
+
         javax.swing.GroupLayout jd_DoctorLayout = new javax.swing.GroupLayout(jd_Doctor.getContentPane());
         jd_Doctor.getContentPane().setLayout(jd_DoctorLayout);
         jd_DoctorLayout.setHorizontalGroup(
             jd_DoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_DoctorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         jd_DoctorLayout.setVerticalGroup(
             jd_DoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_DoctorLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -115,12 +150,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel8.setText("Sexo");
 
         jLabel9.setText("Fecha de ingreso");
-
-        tf_Sexo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_SexoActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Tipo de sangre:");
 
@@ -190,7 +219,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                                         .addGap(24, 24, 24))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,16 +332,20 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton3.setText("Agregar Alergia");
-
-        b_Enfermedad.setText("Agregar enfermedad");
-
-        jLabel24.setText("Sexo");
-
-        tf_Sexo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_Sexo1ActionPerformed(evt);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
             }
         });
+
+        b_Enfermedad.setText("Agregar enfermedad");
+        b_Enfermedad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_EnfermedadMouseClicked(evt);
+            }
+        });
+
+        jLabel24.setText("Sexo");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -475,15 +508,62 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel25.setText("Eliminar Pacientes");
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de pacientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 2, 14))); // NOI18N
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(cb_PacientesElim, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(cb_PacientesElim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        jButton5.setText("Eliminar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Eliminar Paciente", jPanel4);
@@ -597,7 +677,9 @@ public class Principal extends javax.swing.JFrame {
         Pacientes P = new Pacientes(dc_FechaIngreso.getDate(), dc_FechaAlta.getDate(), tf_TipoSangre.getText(), ta_CausaVisita.getText(),
                 tf_NombreP.getText(), Integer.parseInt(tf_Edad.getText()), tf_ID.getText(), Double.parseDouble(tf_Altura.getText()), Double.parseDouble(tf_Peso.getText()), tf_Sexo.getText());
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Pacientes.getModel();
+        DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_PacientesElim.getModel();
         modelo.addElement(P);
+        modelo1.addElement(P);
         tf_NombreP.setText("");
         tf_Edad.setText("");
         tf_ID.setText("");
@@ -612,7 +694,18 @@ public class Principal extends javax.swing.JFrame {
 
     private void b_modMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_modMouseClicked
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Pacientes.getModel();
-
+        Pacientes p = (Pacientes)modelo.getSelectedItem();
+        p.setNombre(tf_NombreP1.getText());
+        p.setEdad(Integer.parseInt(tf_Edad1.getText()));
+        p.setID(tf_ID1.getText());
+        p.setAltura(Double.parseDouble(tf_Altura1.getText()));
+        p.setPeso(Double.parseDouble(tf_Peso1.getText()));
+        p.setTipo_Sangre(tf_TipoSangre1.getText());
+        p.setCausa_Vistita(ta_CausaVisita1.getText());
+        p.setFecha_Ingreso(dc_FechaIngreso1.getDate());
+        p.setFecha_Alta(dc_FechaAlta.getDate());
+        p.setSexo(tf_Sexo1.getText());
+        
         tf_NombreP1.setText("");
         tf_Edad1.setText("");
         tf_ID1.setText("");
@@ -641,13 +734,34 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cb_PacientesItemStateChanged
 
-    private void tf_SexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_SexoActionPerformed
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Pacientes.getModel();
+        char resp;
+        do {
+            String Alergia = JOptionPane.showInputDialog(this, "Ingrese el nombre de la alergia");
+            String respuesta = JOptionPane.showInputDialog(this, "Desea continuar [S/N]");
+            resp = respuesta.charAt(0);
+            ((Pacientes)modelo.getSelectedItem()).getAlergias().add(Alergia);
+        } while (resp == 's' || resp == 'S');
+    }//GEN-LAST:event_jButton3MouseClicked
 
-    }//GEN-LAST:event_tf_SexoActionPerformed
+    private void b_EnfermedadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_EnfermedadMouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Pacientes.getModel();
+        char resp;
+        do {
+            String Enfermedad = JOptionPane.showInputDialog(this, "Ingrese el nombre de la alergia");
+            String respuesta = JOptionPane.showInputDialog(this, "Desea continuar [S/N]");
+            resp = respuesta.charAt(0);
+            ((Pacientes)modelo.getSelectedItem()).getEnfermedades().add(Enfermedad);
+        } while (resp == 'S' || resp == 'S');
+    }//GEN-LAST:event_b_EnfermedadMouseClicked
 
-    private void tf_Sexo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_Sexo1ActionPerformed
-
-    }//GEN-LAST:event_tf_Sexo1ActionPerformed
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Pacientes.getModel();
+        DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_PacientesElim.getModel();
+        modelo.removeElement(modelo1.getSelectedItem());
+        modelo1.removeElement(modelo1.getSelectedItem());
+    }//GEN-LAST:event_jButton5MouseClicked
 
     public static void main(String args[]) {
 
@@ -680,7 +794,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_Enfermedad;
     private javax.swing.JButton b_mod;
-    private javax.swing.JComboBox<String> cb_Pacientes;
+    private javax.swing.JComboBox<Pacientes> cb_Pacientes;
+    private javax.swing.JComboBox<Pacientes> cb_PacientesElim;
     private com.toedter.calendar.JDateChooser dc_FechaAlta;
     private com.toedter.calendar.JDateChooser dc_FechaAlta1;
     private com.toedter.calendar.JDateChooser dc_FechaIngreso;
@@ -689,6 +804,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -706,6 +822,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -717,6 +834,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
