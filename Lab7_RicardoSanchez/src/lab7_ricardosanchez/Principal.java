@@ -3,6 +3,8 @@ package lab7_ricardosanchez;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -1455,6 +1457,11 @@ public class Principal extends javax.swing.JFrame {
         
         modelo.addElement(D);
         modelo1.addElement(D);
+        
+        DefaultTreeModel modeloA = (DefaultTreeModel) jt_Reporte.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloA.getRoot();
+        DefaultMutableTreeNode Doc = new DefaultMutableTreeNode(D);
+        modeloA.reload();
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void cb_DoctorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_DoctorItemStateChanged
